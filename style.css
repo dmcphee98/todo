@@ -1,0 +1,211 @@
+/* Removes the basic styling of the browser */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+body {
+    /* Gradient taken from uiGradients.com */
+    background: #B993D6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8CA6DB, #B993D6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8CA6DB, #B993D6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* Controls text colour */
+    color: rgb(230, 230, 230);
+    /* Roboto font taken from fonts.google.com */
+    font-family: 'Roboto Serif', sans-serif;
+    /* 100vh is 100% of the vertical height of the page */
+    min-height: 100vh;
+}
+
+header {
+    /* rem is relative to the font size of the root element */
+    font-size: 1.5rem;
+}
+
+/* Can apply styles to multiple elements at once */
+header, 
+form {
+    min-height: 20vh;
+    /* Learn more about FlexBox here: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+    display: flex;
+    /* Defines alignment along main axis (in this case, horizontal) */
+    justify-content: center;
+    /* Defines alignment along cross axis (in this case, vertical) */
+    align-items: center;
+}
+
+/* Applies only to inputs and buttons that are children of forms */
+form input,
+form button {
+    padding: 0.5rem;
+    font-size: 2rem;
+    border: none;
+    background: none;
+    /* Makes the background of the button white instead of grey */
+}
+
+form input {
+    width: 90%;
+    border-radius: 100px;
+    border-style: none;
+    /* Must respecify (or inherit) font family and size */
+    font-family: inherit;
+    font-size: 1.25rem;
+    /* Nudge the input text a little lower in the box */
+    margin-top: 0.1rem;
+    margin-left: 0.5rem;
+}
+
+.todo-input-bar {
+    width: 60vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 100px;
+}
+
+/* Stop black border appearing around text field when clicked */
+input:focus{
+    outline: none;
+}
+
+form button {
+    color: #B993D6;
+    /* Changes the cursor icon on mouse hover */
+    cursor: pointer;
+    margin: 0px 10px;
+
+    /* To learn more about transitions, visit https://www.w3schools.com/css/css3_transitions.asp */
+    /* Transition the color property over 0.3s with a slow, fast, slow curve */
+    transition: color 0.3s ease;
+}
+
+/* Need to specify what color to transition to, and what action triggers the transition */
+form button:hover {
+    color: #8CA6DB;
+}
+
+/* Classes start with a period */
+.todo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-list {
+    list-style-type: none;
+    /* vh is the percentage of the overall window */
+    /* % is the percentage of the parent container */
+    min-width: 30%;
+}
+
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem;
+    background: white;
+    min-height: 5vh;
+    font-size: 1.25rem;
+    color: black;
+    width: 50vw;
+    border-radius: 100px;
+}
+
+.todo-transition {
+    /* Changes to ANY todo property will happen over 0.3s */
+    transition: all 0.3s ease;
+}
+
+.todo li {
+    /* flex is shorthand for flex-grow, flex-shrink, flex-basis combined */
+    flex: 1;
+}
+
+.todo-item {
+    padding-top: 0.25rem;
+}
+
+.complete-btn,
+.remove-btn {
+    height: 100%;
+    background-color: white;
+    border-radius: 100px;
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.complete-btn {
+    order: 1;
+    color: #B993D6;
+}
+
+.complete-btn:hover {
+    color: #8CA6DB;
+}
+
+
+.remove-btn {
+    order: -1;
+    color: #8CA6DB;
+}
+
+.remove-btn:hover {
+    color: #B993D6;
+}
+
+.complete-btn i,
+.remove-btn i {
+    font-size: 1.5rem;
+    /* Stops the icon inside the button from blocking click detection*/
+    pointer-events: none;
+}
+
+.complete {
+    text-decoration: line-through;
+    opacity: 0.5;
+    color: rgb(172, 172, 172);
+}
+
+.fall {
+    /* Falls and rotates */
+    /* transform: translateY(8rem) rotateZ(20deg); */
+    /* Moves left */
+    transform: translateX(-8rem);
+    opacity: 0;
+}
+
+select {
+    /* 3 lines needed to clear default styling on all browsers */
+    /* See more here: https://developer.mozilla.org/en-US/docs/Web/CSS/appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+
+    color: #B993D6;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 100px;
+    width: auto;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+/* This is the class assigned to the div containing the select */
+.select {
+    margin: 1rem;
+    position: relative;
+    /* Stop text from spilling outside container */
+    overflow: hidden;
+}
+
+/* ::after inserts something after selected content */
+.select::after {
+    content: "\25BC";
+}
